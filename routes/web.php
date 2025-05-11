@@ -1,10 +1,11 @@
 <?php
-
+use App\Http\Controllers\WorkLogController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
-
+Route::delete('/delete/{id}', [WorkLogController::class, 'delete'])->name('delete');
+Route::get('/timePunch', [WorkLogController::class, 'timePunch'])->name('timePunches');
 Route::get('/', function () {
     return view('welcome');
 })->name('home');

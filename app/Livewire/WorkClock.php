@@ -13,7 +13,7 @@ class WorkClock extends Component
     public bool $clockRunning = false;
     public string $elapsedTime = '00:00:00';
     public $Time = null;
-
+    public string $workDescription = '';
     public function displayTime()
     {
         $this->clockRunning = $this->clockRunning === false ? true : false;
@@ -38,10 +38,18 @@ class WorkClock extends Component
     }
     public function stopClock() {
         $this->updateElapsedTime();
-        $this->dispatch('elapsedTime', $this->elapsedTime);
+        $this->sendToTimepunch();
         $this->elapsedTime = '00:00:00';
         $this->startTime = null;
+        $this->workDescription = '';
     }
+    public function sendToTimepunch()
+    {
+        $this->dispatch('elapsedTime', $this->elapsedTime, $this->workDescription);
+
+    }
+
+
 
     public function render()
     {
