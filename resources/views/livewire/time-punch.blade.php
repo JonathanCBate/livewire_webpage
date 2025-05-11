@@ -17,6 +17,6 @@
         @endforeach
     </ul>
     <form action="{{ route('timePunches') }}">
-        <button type="submit">See more -></button>
+        <button class=' bottom-0' type="submit">See more -></button>
     </form>
 </div>
