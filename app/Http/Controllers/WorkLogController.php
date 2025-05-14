@@ -15,9 +15,10 @@ $timePunch = TimePunchEntry::findOrFail($id);
 $timePunch->delete();
 
 
-    return redirect()->route('dashboard')->with('success', 'Time punch deleted successfully!');
+    return back()->with('success', 'Time punch deleted successfully!');
 }
-public function timePunch(){
-    return view('timePunchEntry');
-}
+    public function timePunch() {
+        $timePunches = TimePunchEntry::all();
+        return view('timePunchEntry', compact('timePunches'));
+    }
 }
